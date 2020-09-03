@@ -1,17 +1,14 @@
-"""
-Faça um programa que, dado um conjunto de N números, determine o menor 
-valor, o maior valor e a soma dos valores
-"""
+#Altere o programa anterior para que ele aceite apenas números entre 0 e 1000.
 
-continuar = "sim"
+continuar = "s"
 conjunto = []
 maior = -1
 menor = -1
 soma = 0
 
-while continuar.lower() == "sim":
+while continuar.lower() == "s":
 	novo_numero = int(input("Digite um número: "))
-	if novo_numero > 0:
+	if 0 < novo_numero < 1000:
 		conjunto.append(novo_numero)
 		
 		if maior == -1 and menor == -1:
@@ -26,8 +23,9 @@ while continuar.lower() == "sim":
 		soma+=novo_numero
 		continuar = input("Deseja adicionar outro número? ")
 	else:
-		print("Digite um número inteiro positivo!")
+		print("Digite um número entre 0 e 1000!")
 
 		
 print(f"Menor número: {menor}\nMaior número: {maior}\nSoma: {soma}")
+
 
