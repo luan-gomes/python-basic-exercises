@@ -1,15 +1,14 @@
+#Simulação de uma agenda telefônica
+
+import funcoes as f
+
 lista = []
 
 while True:
 	
-	print("1) Adicionar contato")
-	print("2) Remover contato")
-	print("3) Exibir agenda")
-	print("0) Sair")
-	
 	try:
-		opcao = int(input("Digite uma opção [0-3]: "))
-		
+		opcao = f.menu("Sair","Adicionar contato","Remover contato","Exibir agenda")
+		print(opcao)
 		if opcao == 0:
 			break
 			
