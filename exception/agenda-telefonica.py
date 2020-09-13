@@ -1,8 +1,32 @@
 #Simulação de uma agenda telefônica
 
 import funcoes as f
+import json
 
 lista = []
+
+#Ao iniciar o programa, verificar se já existe uma agenda.
+
+try:
+	
+	arquivo = open("agenda.json","r")
+	lista = json.load(arquivo)
+	
+except FileNotFoundError:
+	print("Arquivo não encontrado.")
+
+except PermissionError:
+	print("Você não tem permissão para acessar este arquivo.")
+
+except IOError:
+	print("Erro de E/S.")
+	
+except json.decoder.JSONDecodeError:
+	print("O arquivo não está em formato JSON.")
+	
+else:
+	arquivo.close()
+
 
 while True:
 	
@@ -10,6 +34,15 @@ while True:
 		opcao = f.menu("Sair","Adicionar contato","Remover contato","Exibir agenda")
 		print(opcao)
 		if opcao == 0:
+			try:
+				arquivo = open("agenda.json","w")
+				json.dump(lista,arquivo)
+			except PermissionError:
+				print("Você não tem permissão para acessar este arquivo.")
+			except IOError:
+				print("Erro de E/S.")
+			else:
+				arquivo.close()				
 			break
 			
 		elif opcao == 1:
